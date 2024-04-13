@@ -1,28 +1,50 @@
 
+//startando o express e instanciando ele na variavel server
+const express = require('express');
+const server = express();
 
-//módulo interno do javascript
-const http = require('http');
-
-//método disponibilizado pelo módulo http.
-const server = http.createServer((request, response) => {
-if(request.url === '/'){
-    //log do caminho local "localhost:3000/"
-    console.log('Entrei na primeira rota');
-    response.end('Olá mundo na primeira rota')
-}
-if(request.url === '/usuarios'){
-    //log do caminho local "localhost:3000/usuarios"    
-    console.log('Entrei na rota de usuários');
-    response.end('Olá mundo na rota de usuários')
-}
-
-});
-
-// 
 
 server.listen(3000);
 
-// instalado o express através do npm, pelo terminal por comando "npm install express"
+server.get('/usuarios', (request, response) => {
+    const usuarios = [{
+        nome: "rafael"
+    },{
+        nome:"daniel",
+    },{
+        nome:"angelina"
+    }];
+
+return response.json(usuarios);
+})
+
+
+
+
+
+
+
+
+
+//módulo interno do javascript
+// const http = require('http');
+
+//método disponibilizado pelo módulo http.
+// const server = http.createServer((request, response) => {
+// if(request.url === '/'){
+//     //log do caminho local "localhost:3000/"
+//     console.log('Entrei na primeira rota');
+//     response.end('Olá mundo na primeira rota')
+// }
+// if(request.url === '/usuarios'){
+//     //log do caminho local "localhost:3000/usuarios"    
+//     console.log('Entrei na rota de usuários');
+//     response.end('Olá mundo na rota de usuários')
+// }
+
+// });
+
+// instalado o express através do npm, pelo terminal por comando    "npm install express"
 
 /*
 ARQUITETURA REST API
