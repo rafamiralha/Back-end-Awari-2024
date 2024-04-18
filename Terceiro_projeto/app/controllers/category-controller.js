@@ -1,4 +1,4 @@
-const list = (req,res) => {
-    return res.json('rota de categoria')
+const list = (request,response) => {
+    return response.json({name:'Fitness', description: 'Academia'});
 }
-module.exports = list
+module.exports = list;
