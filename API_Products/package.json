@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "name": "api_products",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type":"module",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "node ./app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rafael",
+  "license": "ISC",
+  "description": ""
+}
