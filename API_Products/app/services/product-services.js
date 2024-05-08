@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const create = (product) => {
     console.log(product);
 } 
@@ -14,5 +16,17 @@ const remove = (id) => {
     console.log(id);
 } 
 
+const searchAddress = async (zipCode) => {
+    const {data} = await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`)
+    return data;
+} 
 
-export {create, read, update, remove};
+// A função abaixo comentada não funcionaria corretamente porque é um procedimento async e ficou dependendo da resposta de uma promisse sem resposta. 
+// const searchAddress = (zipCode) => {
+//     address = axios.get('https://viacep.com.br/ws/01001000/json/')
+//  return address;
+// } 
+
+
+
+export {create, read, update, remove, searchAddress};
