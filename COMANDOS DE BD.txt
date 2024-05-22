@@ -1,0 +1,66 @@
+#Como declarar uma Tabela Simples
+
+#create table products (
+#id int primary key auto_increment,
+#name varchar(100) not null,
+#shortDescription varchar(100) not null,
+#description varchar(255) not null,
+#price decimal(10,2) not null,
+#category varchar(30) not null,
+#urlBanner varchar(200)  not null
+#);
+
+#Como Inserir valor numa tabela
+
+#insert into products values
+#(2,
+# 'Fogão',
+# 'Fogão 4 bocas',
+# 'Fogão Completo',
+#  800.00,
+# 'Eletro',
+# '#'
+#)
+
+# Como Selecionar Campos de uma Tabela
+# select * from products;
+
+#select * from products where category = 'Eletro';
+
+#PODEMOS UTILIZAR > < >= <= PARA AJUDAR A FILTAR
+
+#select * from products where price > 850;
+
+#ORDENANDO DO MENOR PRO MAIOR USAMOS ASC E DO MAIOR PRO MENOR DESC
+
+#select * from products order by price asc;
+
+#DA PRA MESCLAR WHERE COM ORDER BY PARA FILTRAR MELHOR
+
+#select * from products where category = 'Eletro' order by price desc;
+
+#PODEMOS PROCURAR POR DADOS QUE TENHAM DENTRO UMA INFORMAÇÃO QUE PRECISAMOS COM O LIKE + 
+# % se colocar %Completo vai buscar coisas que terminem com completo, Completo% vai buscar o que
+#começa com Comepleto e %Completo% vai buscar info que tenha completo independente da posição
+
+
+#select * from products where description like '%Completo';
+
+
+#SELECT SUM(PRICE) AS TOTAL_PRICE FROM PRODUCTS; ESSE COMANDO IRÁ SOMAR OS VALORES DO PRODUCTS
+
+#SELECT AVG(PRICE) AS AVERAGE_PRICE FROM PRODUCTS; ESSE COMANDO IRÁ FAZER UMA MÉDIA DOS VALORES DO PRODUCTS
+
+#SELECT MAX(PRICE) AS MAX FROM PRODUCTS; ESSE COMANDO IRÁ MOSTRAR O MAIOR VALOR EM PRICE DE PRODUCTS
+
+#SELECT MIN(PRICE) AS MIN FROM PRODUCTS; ESSE COMANDO IRÁ MOSTRAR O MENOR VALOR EM PRICE DE PRODUCTS
+
+O "AS" NESSE COMANDO INSTANCIA UM NOME DE CAMPO PARA O VALOR RESULTANTE 
+
+#EXEMPLO DE UPDATE 
+# A PRATICA PARA UPDATE É SEMPRE REFERENCIAR O CAMPO PELO ID PARA NÃO ATUALIZAR OUTROS CAMPOS ERRADO
+#update products set description = 'Smartphone Completo' where id = 1;
+
+#EXEMPLO DE DELETE (NÃO É UMA BOA PRÁTICA FAZER ISSO)
+
+#delete from products where id = 2;
