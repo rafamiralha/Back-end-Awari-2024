@@ -19,22 +19,26 @@ server.get('/api/orders/address-shipping', async (request, response)=> {
 });
 
 
-server.get('/api/products', (request,response)=>{
-    const {name,description,price,category} = request.query;
-    const filter = {name,description,price,category};
-    read(filter);
-    return response.status(200).json({message: "{GET} Deu certo!"});
+server.get('/api/products', async (request,response)=>{
+   
+    const {name,description,price,category,limit} = request.query;
+    const filter = {name,description,price,category,limit};
+   const products = await read(filter);
+   if (products.length > 0){
+   
+    return response.status(200).json({products});
+   } else {return  response.status(500).json({message: 'Internal Server Error'});}
 });
 
 
-server.post('/api/products', (request,response)=>{
+server.post('/api/products', async (request,response)=>{
     const {
-        name,
-        shortDescription,
-        description,
-        price,
-        category,
-        urlBanner
+            name,
+            shortDescription,
+            description,
+            price,
+            category,
+            urlBanner
     } = request.body;
     const payload = { 
         name,
@@ -44,12 +48,17 @@ server.post('/api/products', (request,response)=>{
         category,
         urlBanner
     };
-    create(payload);
-    return response.status(200).json({message: "{POST} Deu certo!"});
+     const product = await create(payload);
+     if (product){
+      return response.status(200).json({message: "{POST} Deu certo!"});
+     }else{
+        return response.status(500).json({message: "{POST} não deu certo"});
+     }
+    
 });
 
 
-server.put('/api/products/:id', (request,response)=>{
+server.put('/api/products/:id', async (request,response)=>{
     const {
         name,
         shortDescription,
@@ -67,14 +76,28 @@ server.put('/api/products/:id', (request,response)=>{
         urlBanner
     };
     const { id } =  request.params;
-    update(payload,id)
-    return response.status(200).json({message: "{PUT} Deu certo!"});
+ const product = await update(payload,id)
+    if(product){
+        return response.status(200).json(payload);
+    }else{
+        return response.status(500).json({message: "Internal Error!"});
+    }
+
 });
 
 
-server.delete('/api/products/:id', (request,response)=>{
+server.delete('/api/products/:id', async (request,response)=>{
     const { id } = request.params;
-    remove({id});
-    console.log('Delete funcionando');
+  const result = await remove(id);
+
+  if (result){
     return response.status(204).json({message: "{DELETE} Deu certo!"});
+   }else{
+      return response.status(500).json({message: "{DELETE} não deu certo"});
+   }
+    
 });
+//banco de dados
+//localhost ou 127.0.0.1
+//usuario: root
+//banco: awari
