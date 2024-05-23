@@ -5,7 +5,6 @@ import express from 'express';
 import {create, read, update, remove, searchAddress} from './services/product-services.js';
 const server = express();
 server.use(express.json());
-server.listen(3000);
 //completed url e.g: localhost:3000/api/products?name=Iphone&price=4000&category=Smartphone
 
 //localhost:3000/api/orders/address-shipping?zipCode=09810630
