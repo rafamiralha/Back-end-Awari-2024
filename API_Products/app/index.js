@@ -1,3 +1,6 @@
+import 'dotenv/config'
+//DOTENV É UTILIZADO PARA OCULTAR AS INFORMAÇÕES SENSIVEIS DO BANCO DE DADOS
+
 import express from 'express';
 import {create, read, update, remove, searchAddress} from './services/product-services.js';
 const server = express();

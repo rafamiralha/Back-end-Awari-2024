@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import connection from '../database/mysql/index.js';
 
@@ -49,8 +50,8 @@ const read = async (filter) => {
 
    try {
     const products =  await connection.query(`select * from products where name LIKE '%${filter.name}%'
-    or category LIKE '%${filter.category}%
-    limit ${filter.limit}'
+    or category LIKE '%${filter.category}%'
+    limit ${filter.limit}
     `)
     return products[0];
    }catch(error){
